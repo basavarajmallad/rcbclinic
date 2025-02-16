@@ -28,18 +28,9 @@ pipeline {
 	 	    	     stage('Run Application') {
             steps {
                 echo 'Running Spring Boot application...'
-                sh 'nohup mvn spring-boot:run &'
+                sh 'mvn spring-boot:run '
 
             }
         }
-	        stage('Check Application Health') {
-        steps {
-            echo 'Checking application health...'
-            sh '''
-                echo "Fetching health endpoint..."
-                curl -s --head http://localhost:8080/actuator/health | head -n 10
-            '''
-        }
-    }
     }
 }
