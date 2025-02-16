@@ -11,9 +11,8 @@ pipeline {
         }
 		    stage('Set up Environment') {
         steps {
-            sh "export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))"
-             sh "echo "JAVA_HOME=$JAVA_HOME"
-           
+            sh 'export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))'            
+	    sh 'MAVEN_HOME=/usr/share/maven'           
         }
     }
            stage('build') {             
