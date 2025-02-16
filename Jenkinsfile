@@ -32,5 +32,14 @@ pipeline {
 
             }
         }
+	        stage('Check Application Health') {
+        steps {
+            echo 'Checking application health...'
+            sh '''
+                echo "Fetching health endpoint..."
+                curl -s --head http://localhost:8080/actuator/health | head -n 10
+            '''
+        }
+    }
     }
 }
