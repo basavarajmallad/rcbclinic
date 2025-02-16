@@ -19,6 +19,19 @@ pipeline {
                 sh "mvn clean package"
                   }
         }
+	    	     stage('Run Application') {
+            steps {
+                echo 'Running Spring Boot application...'
+                sh 'nohup mvn spring-boot:run &'
+                sleep(time: 15, unit: 'SECONDS') // Wait for the application to fully start
+
+                // Fetch the public IP and display the access URL
+                script {
+                    def publicIp = sh(script: "curl -s https://checkip.amazonaws.com", returnStdout: true).trim()
+                    echo "The application is running and accessible at: http://${publicIp}:8080"
+                }
+            }
+        }
         
     }
 }
