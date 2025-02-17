@@ -14,7 +14,7 @@ pipeline {
 		 
             }
         }
-	   stages {
+	  
         stage('setupjava17') {             
             steps {
 		      echo " installing java 17"
