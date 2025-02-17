@@ -11,7 +11,7 @@ pipeline {
              //   sh "rm -rf rcbclinic"
             //    sh "git clone https://github.com/basavarajmallad/rcbclinic.git"
 		//		 sh "cd rcbclinic"
-		    checkout scm 
+		//    checkout scm 
             }
         }
 	
