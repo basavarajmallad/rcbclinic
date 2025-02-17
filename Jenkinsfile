@@ -14,12 +14,7 @@ pipeline {
 		    checkout scm 
             }
         }
-		    stage('Set up Environment') {
-        steps {
-            sh 'export export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))'            
-	    sh 'export MAVEN_HOME=/usr/share/maven'           
-        }
-    }
+	
            stage('build') {             
             steps {               
                 sh "mvn clean package"
