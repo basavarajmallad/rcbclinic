@@ -8,13 +8,28 @@ pipeline {
     stages {
         stage('Checkout') {             
             steps {
-             //   sh "rm -rf rcbclinic"
-            //    sh "git clone https://github.com/basavarajmallad/rcbclinic.git"
-		//		 sh "cd rcbclinic"
-		//    checkout scm 
+               sh "rm -rf rcbclinic"
+               sh "git clone https://github.com/basavarajmallad/rcbclinic.git"
+				 sh "cd rcbclinic"
+		 
             }
         }
-	
+	   stages {
+        stage('setupjava17') {             
+            steps {
+		      echo " installing java 17"
+               sh "sudo apt update"
+     		sh "sudo apt install -y openjdk-17-jdk"
+		 
+            }
+        }
+
+	 stage('setupmaven') {             
+            steps {  
+		    echo " installing maveen"
+     		sh "sudo apt install -y maven"		 
+            }
+        }
            stage('build') {             
             steps {               
                 sh "mvn clean package"
