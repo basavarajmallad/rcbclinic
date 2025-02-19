@@ -31,8 +31,9 @@ pipeline {
 
 	 stage('setupmaven') {             
             steps {  
-		    echo " installing maveen"
-     		sh "sudo apt install -y maven"		 
+		 //   echo " installing maveen"
+     		//sh "sudo apt install -y maven"
+		    setupjava('maven')
             }
         }
            stage('build') {             
