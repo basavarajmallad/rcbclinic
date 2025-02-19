@@ -1,3 +1,5 @@
+@Library('java_demo_pipeline@main') _
+
 pipeline {
   agent { label 'slave2' }	
 	environment {
@@ -8,17 +10,17 @@ pipeline {
     stages {
         stage('Checkout') {             
             steps {
-               sh "rm -rf rcbclinic"
-               sh "git clone https://github.com/basavarajmallad/rcbclinic.git"
-				 sh "cd rcbclinic"
-		 
+             //  sh "rm -rf rcbclinic"
+              // sh "git clone https://github.com/basavarajmallad/rcbclinic.git"
+		// sh "cd rcbclinic"
+		checkoutcode()		 
             }
         }
 	  
         stage('setupjava17') {             
             steps {
-		   sh "whoami"
-		      echo " installing java 17"
+		   //sh "whoami"
+		      //echo " installing java 17"
                sh "sudo apt update"
      		sh "sudo apt install -y openjdk-17-jdk"
 		 
